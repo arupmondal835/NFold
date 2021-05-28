@@ -8,12 +8,13 @@
 #SBATCH --distribution=cyclic:cyclic
 #SBATCH --mem-per-cpu=800mb              # Memory per processor
 #SBATCH --time=60:00:00                  # Time limit hrs:min:sec
-#SBATCH --output=meld.log                # Standard output and error log
+#SBATCH --output=meld.log # Standard output and error log
+#SBATCH --constraint=2080ti
 
  
 
 
-source ~/.load_OpenMM_cuda10             #load OpenMM+Meld
+source ~/.load_meld_0.4.19             #load OpenMM+Meld
 
 [[ -d Data ]] || python setup_aMeld.py   #check if there is already a Data/, we are continuing a killed simulation, otherwise start new setup_aMeld.py simulation.
 
